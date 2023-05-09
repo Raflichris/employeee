@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Input Biodata</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Form Input Biodata</h2>
+  <form id="biodataForm">
+    <label for="nama">Nama Lengkap:</label>
+    <input type="text" id="nama" required>
+
+    <label>Jenis Kelamin:</label>
+    <label for="LakiLaki">
+      <input type="radio" id="LakiLaki" name="jenisKelamin" value="Laki Laki">Laki Laki
+    </label>
+    <label for="Perempuan">
+      <input type="radio" id="Perempuan" name="jenisKelamin" value="Perempuan">Perempuan
+    </label>
+
+    <label>Hobby:</label>
+    <label for="Baca Buku">
+      <input type="checkbox" id="bacaBuku" name="hobby" value="Baca Buku">Baca Buku
+    </label>
+    <label for="olahraga">
+      <input type="checkbox" id="olahraga" name="hobby" value="Olah Raga">Olah Raga
+    </label>
+    <label for="mainGame">
+      <input type="checkbox" id="mainGame" name="hobby" value="Main Game">Main Game
+    </label>
+    <label for="hiking">
+        <input type="checkbox" id="hiking" name="hobby" value="Hiking">Hiking
+      </label>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    document.getElementById("biodataForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var nama = document.getElementById("nama").value;
+      var jenisKelamin = document.querySelector('input[name="jenisKelamin"]:checked').value;
+
+      var hobbies = [];
+      var checkboxes = document.querySelectorAll('input[name="hobby"]:checked');
+      for (var i = 0; i < checkboxes.length; i++) {
+        hobbies.push(checkboxes[i].value);
+      }
+
+      var output = "Nama: " + nama + "\nJenis Kelamin: " + jenisKelamin + "\nHobby: " + hobbies.join(", ");
+
+      alert(output);
+    });
+  </script>
+</body>
+</html>
